@@ -3,6 +3,7 @@ package com.sigabem.freteBrasil.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,11 +17,18 @@ public class Frete {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long freteId;
+	
+	@Column(name="cepOrigem")
 	private String cepOrigem;
+	@Column(name="cepDestino")
 	private String cepDestino;
+	@Column(name="nomeDestinatario")
 	private String nomeDestinatario;
+	@Column(name="vlTotalFrete")
 	private Double vlTotalFrete;
+	@Column(name="dataPrevistaEntrega")
 	private Date dataPrevistaEntrega;
+	@Column(name="dataConsulta")
 	private Date dataConsulta;
 	
 	public Frete() {
