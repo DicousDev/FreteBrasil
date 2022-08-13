@@ -1,4 +1,4 @@
-package com.cd2tec.freteBrasil;
+package com.sigabem.freteBrasil;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
