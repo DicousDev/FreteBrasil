@@ -1,52 +1,57 @@
 package com.sigabem.freteBrasil.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import com.sigabem.freteBrasil.utils.Utils;
+
 public class FreteRequestDTO {
 
+	@NotNull(message = "Preencha o nome do destinatario!")
+	@NotBlank(message = "Preencha o nome do destinatario!")
 	private String nomeDestinatario;
-	private String cepOrigem;
-	private String cepDestino;
-	private Double peso;
 	
-	public FreteRequestDTO() {
-		
-	}
+	@NotNull(message = "Preencha o cep da origem!")
+	@NotBlank(message = "Preencha o cep da origem!")
+	private String cepOrigem;
+	
+	@NotNull(message = "Preencha o cep do destino!")
+	@NotBlank(message = "Preencha o cep do destino!")
+	private String cepDestino;
+	
+	@NotNull
+	@Min(value = 0, message = "O peso tem que ser igual ou maior que 0.")
+	private Double peso;
 	
 	public FreteRequestDTO(String nomeDestinatario, String cepOrigem, String cepDestino, Double peso) {
 		this.nomeDestinatario = nomeDestinatario;
-		this.cepOrigem = cepOrigem;
-		this.cepDestino = cepDestino;
+		setCepOrigem(cepOrigem);
+		setCepDestino(cepDestino);
 		this.peso = peso;
 	}
-
+	
 	public String getNomeDestinatario() {
 		return nomeDestinatario;
-	}
-
-	public void setNomeDestinatario(String nomeDestinatario) {
-		this.nomeDestinatario = nomeDestinatario;
 	}
 
 	public String getCepOrigem() {
 		return cepOrigem;
 	}
 
-	public void setCepOrigem(String cepOrigem) {
-		this.cepOrigem = cepOrigem;
-	}
-
 	public String getCepDestino() {
 		return cepDestino;
-	}
-
-	public void setCepDestino(String cepDestino) {
-		this.cepDestino = cepDestino;
 	}
 
 	public Double getPeso() {
 		return peso;
 	}
-
-	public void setPeso(Double peso) {
-		this.peso = peso;
+	
+	private void setCepOrigem(String cep) {
+		cepOrigem = Utils.apenasNumero(cep).substring(0, 8);
+	}
+	
+	private void setCepDestino(String cep) {
+		cepDestino = Utils.apenasNumero(cep).substring(0, 8);
 	}
 }
