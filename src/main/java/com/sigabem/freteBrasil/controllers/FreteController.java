@@ -1,6 +1,8 @@
 package com.sigabem.freteBrasil.controllers;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +22,17 @@ import com.sigabem.freteBrasil.services.FreteService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value = "/frete")
+@RequestMapping(value = "/fretes")
 public class FreteController {
 
 	@Autowired
 	private FreteService freteService;
+	
+	@ApiOperation(value = "Busca todos os fretes", code = 200, response = FreteResponseDTO.class)
+	@GetMapping
+	public List<FreteResponseDTO> getFreteById() {	
+		return freteService.findFretesAll();
+	}
 	
 	@ApiOperation(value = "Buscar frete por ID",code = 200, response = FreteResponseDTO.class)
 	@GetMapping(value = "/{idFrete}")

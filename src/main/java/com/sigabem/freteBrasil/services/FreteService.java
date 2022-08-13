@@ -2,7 +2,9 @@ package com.sigabem.freteBrasil.services;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,10 @@ public class FreteService {
 	
 	@Autowired
 	private CepService cepService;
+	
+	public List<FreteResponseDTO> findFretesAll() {
+		return freteRepository.findAll().stream().map(frete -> new FreteResponseDTO(frete)).collect(Collectors.toList());
+	}
 	
 	public FreteResponseDTO findFreteById(Long idFrete) {
 		
