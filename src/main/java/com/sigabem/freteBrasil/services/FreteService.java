@@ -40,20 +40,22 @@ public class FreteService {
 			entregaPrevista.add(Calendar.DATE, 10);
 		}
 		
+		
 		Date dataPrevista = entregaPrevista.getTime();
 		Calendar dataHoje = Calendar.getInstance();
-		FreteResponseDTO freteResponse = new FreteResponseDTO(freteRequest.getCepOrigem(), freteRequest.getCepDestino(), totalFrete, dataPrevista);
 		Frete frete = new Frete(freteRequest.getCepOrigem(), freteRequest.getCepDestino(), freteRequest.getNomeDestinatario(), totalFrete, dataPrevista, dataHoje.getTime());
 		freteRepository.save(frete);
+		
+		FreteResponseDTO freteResponse = new FreteResponseDTO(freteRequest.getCepOrigem(), freteRequest.getCepDestino(), totalFrete, dataPrevista);
 		return freteResponse;
 	}
 	
 	private Double aplicarDesconto(Double valor, Double porcentagem) {
-		Double desconto = calcularDesconto(valor, porcentagem);
+		Double desconto = calcularPorcentagem(valor, porcentagem);
 		return valor - desconto;
 	}
 	
-	private Double calcularDesconto(Double valor, Double porcentagem) {
+	private Double calcularPorcentagem(Double valor, Double porcentagem) {
 		return (porcentagem / 100) * valor;
 	}
 	
