@@ -24,6 +24,10 @@ public class FreteRequestDTO {
 	@Min(value = 0, message = "O peso tem que ser igual ou maior que 0.")
 	private Double peso;
 	
+	public FreteRequestDTO() {
+		
+	}
+	
 	public FreteRequestDTO(String nomeDestinatario, String cepOrigem, String cepDestino, Double peso) {
 		this.nomeDestinatario = nomeDestinatario;
 		setCepOrigem(cepOrigem);

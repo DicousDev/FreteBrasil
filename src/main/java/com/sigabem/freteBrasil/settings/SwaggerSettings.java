@@ -27,7 +27,7 @@ public class SwaggerSettings extends WebMvcConfigurationSupport {
 	
 	private ApiInfo metaData() {
 		return new ApiInfoBuilder()
-				.title("ShopZ API")
+				.title("Frete Brasil API")
 				.description("\"API \"")
 				.version("1.0.0")
 				.license("Apache License Version 2.0")
