@@ -1,1 +1,1 @@
-create table tb_frete ("freteId"  bigserial not null, "cepDestino" varchar(255), "cepOrigem" varchar(255), "dataConsulta" timestamp, "dataPrevistaEntrega" timestamp, "nomeDestinatario" varchar(255), "vlTotalFrete" float8, primary key ("freteId"));
+create table tb_frete (id  bigserial not null, "cepDestino" varchar(255), "cepOrigem" varchar(255), "dataConsulta" timestamp, "dataPrevistaEntrega" timestamp, "nomeDestinatario" varchar(255), "vlTotalFrete" float8, primary key (id));

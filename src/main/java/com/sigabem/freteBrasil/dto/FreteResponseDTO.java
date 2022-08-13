@@ -7,6 +7,7 @@ import com.sigabem.freteBrasil.entities.Frete;
 
 public class FreteResponseDTO {
 
+	private Long idFrete;
 	private String cepOrigem;
 	private String cepDestino;
 	private Double vlTotalFrete;
@@ -16,7 +17,8 @@ public class FreteResponseDTO {
 		
 	}
 	
-	public FreteResponseDTO(String cepOrigem, String cepDestino, Double valorTotalFrete, Date dataPrevistaEntrega) {
+	public FreteResponseDTO(Long idFrete, String cepOrigem, String cepDestino, Double valorTotalFrete, Date dataPrevistaEntrega) {
+		this.idFrete = idFrete;
 		this.cepOrigem = cepOrigem;
 		this.cepDestino = cepDestino;
 		vlTotalFrete = valorTotalFrete;
@@ -24,10 +26,15 @@ public class FreteResponseDTO {
 	}
 	
 	public FreteResponseDTO(Frete frete) {
+		this.idFrete = frete.getIdFrete();
 		this.cepOrigem = frete.getCepOrigem();
 		this.cepDestino = frete.getCepDestino();
 		vlTotalFrete = frete.getVlTotalFrete();
 		setDataPrevistaEntrega(frete.getDataPrevistaEntrega());
+	}
+	
+	public Long getIdFrete() {
+		return idFrete;
 	}
 
 	public String getCepOrigem() {

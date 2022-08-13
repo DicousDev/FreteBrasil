@@ -16,8 +16,7 @@ public class Frete {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="\"freteId\"")
-	private Long freteId;
+	private Long id;
 	
 	@Column(name="\"cepOrigem\"")
 	private String cepOrigem;
@@ -51,12 +50,12 @@ public class Frete {
 		this.dataConsulta = dataConsulta;
 	}
 
-	public Long getFreteId() {
-		return freteId;
+	public Long getIdFrete() {
+		return id;
 	}
 
-	public void setFreteId(Long freteId) {
-		this.freteId = freteId;
+	public void setIdFrete(Long idFrete) {
+		this.id = idFrete;
 	}
 
 	public String getCepOrigem() {

@@ -63,9 +63,8 @@ public class FreteService {
 		Date dataPrevista = entregaPrevista.getTime();
 		Calendar dataHoje = Calendar.getInstance();
 		Frete frete = new Frete(freteRequest.getCepOrigem(), freteRequest.getCepDestino(), freteRequest.getNomeDestinatario(), totalFrete, dataPrevista, dataHoje.getTime());
-		freteRepository.save(frete);
-		
-		FreteResponseDTO freteResponse = new FreteResponseDTO(freteRequest.getCepOrigem(), freteRequest.getCepDestino(), totalFrete, dataPrevista);
+		Frete saved = freteRepository.save(frete);
+		FreteResponseDTO freteResponse = new FreteResponseDTO(saved);
 		return freteResponse;
 	}
 	
