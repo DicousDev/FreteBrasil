@@ -16,19 +16,25 @@ public class Frete {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="\"freteId\"")
 	private Long freteId;
 	
-	@Column(name="cepOrigem")
+	@Column(name="\"cepOrigem\"")
 	private String cepOrigem;
-	@Column(name="cepDestino")
+	
+	@Column(name="\"cepDestino\"")
 	private String cepDestino;
-	@Column(name="nomeDestinatario")
+	
+	@Column(name="\"nomeDestinatario\"")
 	private String nomeDestinatario;
-	@Column(name="vlTotalFrete")
+	
+	@Column(name="\"vlTotalFrete\"")
 	private Double vlTotalFrete;
-	@Column(name="dataPrevistaEntrega")
+	
+	@Column(name="\"dataPrevistaEntrega\"")
 	private Date dataPrevistaEntrega;
-	@Column(name="dataConsulta")
+	
+	@Column(name="\"dataConsulta\"")
 	private Date dataConsulta;
 	
 	public Frete() {
