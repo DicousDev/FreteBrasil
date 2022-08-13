@@ -22,6 +22,10 @@ public class Frete {
 	private Double vlTotalFrete;
 	private Date dataPrevistaEntrega;
 	private Date dataConsulta;
+	
+	public Frete() {
+		
+	}
 
 	public Frete(String cepOrigem, String cepDestino, String nomeDestinatario, Double vlTotalFrete,
 			Date dataPrevistaEntrega, Date dataConsulta) {

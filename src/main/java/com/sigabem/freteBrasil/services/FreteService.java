@@ -2,6 +2,7 @@ package com.sigabem.freteBrasil.services;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,16 @@ public class FreteService {
 	
 	@Autowired
 	private CepService cepService;
+	
+	public FreteResponseDTO findFreteById(Long idFrete) {
+		
+		Optional<Frete> frete = freteRepository.findById(idFrete);
+		if(frete.isEmpty()) {
+			throw new RuntimeException("O frete não foi encontrado.");
+		}
+		
+		return new FreteResponseDTO(frete.get());
+	}
 	
 	public FreteResponseDTO pedirFrete(FreteRequestDTO freteRequest) throws Exception {
 		

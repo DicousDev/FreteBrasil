@@ -10,6 +10,9 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger.web.OperationsSorter;
+import springfox.documentation.swagger.web.UiConfiguration;
+import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
@@ -25,14 +28,12 @@ public class SwaggerSettings extends WebMvcConfigurationSupport {
 				.apiInfo(metaData());
 	}
 	
-	private ApiInfo metaData() {
-		return new ApiInfoBuilder()
-				.title("Frete Brasil API")
-				.description("\"API \"")
-				.version("1.0.0")
-				.license("Apache License Version 2.0")
-				.licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")
-				.build();
+	@Bean
+	public UiConfiguration uiConfig() {
+	    return UiConfigurationBuilder
+	            .builder()
+	            .operationsSorter(OperationsSorter.METHOD)
+	            .build();
 	}
 	
 	@Override
@@ -42,5 +43,15 @@ public class SwaggerSettings extends WebMvcConfigurationSupport {
 		
 		registry.addResourceHandler("/webjars/**")
 		.addResourceLocations("classpath:/META-INF/resources/webjars/");
+	}
+	
+	private ApiInfo metaData() {
+		return new ApiInfoBuilder()
+				.title("Frete Brasil API")
+				.description("\"API \"")
+				.version("1.0.0")
+				.license("Apache License Version 2.0")
+				.licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")
+				.build();
 	}
 }

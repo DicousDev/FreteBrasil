@@ -3,6 +3,8 @@ package com.sigabem.freteBrasil.dto;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.sigabem.freteBrasil.entities.Frete;
+
 public class FreteResponseDTO {
 
 	private String cepOrigem;
@@ -19,6 +21,13 @@ public class FreteResponseDTO {
 		this.cepDestino = cepDestino;
 		vlTotalFrete = valorTotalFrete;
 		setDataPrevistaEntrega(dataPrevistaEntrega);
+	}
+	
+	public FreteResponseDTO(Frete frete) {
+		this.cepOrigem = frete.getCepOrigem();
+		this.cepDestino = frete.getCepDestino();
+		vlTotalFrete = frete.getVlTotalFrete();
+		setDataPrevistaEntrega(frete.getDataPrevistaEntrega());
 	}
 
 	public String getCepOrigem() {
