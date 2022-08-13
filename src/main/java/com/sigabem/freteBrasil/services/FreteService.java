@@ -48,15 +48,15 @@ public class FreteService {
 		ViaCepDTO destino = cepService.buscarCEP(freteRequest.getCepDestino());
 
 		Calendar entregaPrevista = Calendar.getInstance();
-		if(IsCidadesIguais(origem.ddd, destino.ddd)) {
+		if(isCidadesIguais(origem.ddd, destino.ddd)) {
 			entregaPrevista.add(Calendar.DATE, 1);
 			totalFrete = aplicarDesconto(totalFrete, 50D);
 		}
-		else if(IsEstadosIguais(origem.uf, destino.uf)) {
+		else if(isEstadosIguais(origem.uf, destino.uf)) {
 			entregaPrevista.add(Calendar.DATE, 3);
 			totalFrete = aplicarDesconto(totalFrete, 75D);
 		}
-		else if(!IsEstadosIguais(origem.uf, destino.uf)) {
+		else if(!isEstadosIguais(origem.uf, destino.uf)) {
 			entregaPrevista.add(Calendar.DATE, 10);
 		}
 		
@@ -73,11 +73,11 @@ public class FreteService {
 		return valor - desconto;
 	}
 	
-	private Boolean IsCidadesIguais(String dddOrigem, String dddDestino) {
+	private Boolean isCidadesIguais(String dddOrigem, String dddDestino) {
 		return dddOrigem.equalsIgnoreCase(dddDestino);
 	}
 	
-	private Boolean IsEstadosIguais(String estadoOrigem, String estadoDestino) {
+	private Boolean isEstadosIguais(String estadoOrigem, String estadoDestino) {
 		return estadoOrigem.equalsIgnoreCase(estadoDestino);
 	}
 }
