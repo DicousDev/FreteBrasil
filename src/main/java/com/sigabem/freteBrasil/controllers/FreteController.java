@@ -16,6 +16,8 @@ import com.sigabem.freteBrasil.dto.FreteRequestDTO;
 import com.sigabem.freteBrasil.dto.FreteResponseDTO;
 import com.sigabem.freteBrasil.services.FreteService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/frete")
 public class FreteController {
@@ -23,10 +25,10 @@ public class FreteController {
 	@Autowired
 	private FreteService freteService;
 	
-	
+	@ApiOperation(value = "Fazer frete",code = 201, response = FreteResponseDTO.class)
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ResponseEntity<?> getFrete(@Valid @RequestBody FreteRequestDTO frete) {
+	public ResponseEntity<?> pedirFrete(@Valid @RequestBody FreteRequestDTO frete) {
 		
 		try {
 			FreteResponseDTO response = freteService.pedirFrete(frete);
