@@ -1,4 +1,4 @@
-package com.cd2tec.freteBrasil;
+package com.sigabem.freteBrasil;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

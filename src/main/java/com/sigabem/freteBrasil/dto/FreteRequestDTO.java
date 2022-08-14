@@ -52,10 +52,17 @@ public class FreteRequestDTO {
 	}
 	
 	private void setCepOrigem(String cep) {
-		cepOrigem = Utils.apenasNumero(cep).substring(0, 8);
+		
+		cepOrigem = Utils.apenasNumero(cep);
+		if(cepOrigem.length() >= 8) {
+			cepOrigem = cepOrigem.substring(0, 8);
+		}
 	}
 	
 	private void setCepDestino(String cep) {
-		cepDestino = Utils.apenasNumero(cep).substring(0, 8);
+		cepDestino = Utils.apenasNumero(cep);
+		if(cepDestino.length() >= 8) {
+			cepDestino = cepDestino.substring(0, 8);
+		}
 	}
 }

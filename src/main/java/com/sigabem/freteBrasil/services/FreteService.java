@@ -42,7 +42,6 @@ public class FreteService {
 	}
 	
 	public FreteResponseDTO pedirFrete(FreteRequestDTO freteRequest) throws Exception {
-		
 		Double totalFrete = freteRequest.getPeso() * valorFretePorKg;
 		ViaCepDTO origem = cepService.buscarCEP(freteRequest.getCepOrigem());
 		ViaCepDTO destino = cepService.buscarCEP(freteRequest.getCepDestino());
@@ -68,16 +67,21 @@ public class FreteService {
 		return freteResponse;
 	}
 	
-	private Double aplicarDesconto(Double valor, Double porcentagem) {
+	public Double aplicarDesconto(Double valor, Double porcentagem) {
+		
+		if(porcentagem < 0) {
+			throw new RuntimeException("Erro ao tentar aplicar desconto!");
+		}
+		
 		Double desconto = Utils.calcularPorcentagem(valor, porcentagem);
 		return valor - desconto;
 	}
 	
-	private Boolean isCidadesIguais(String dddOrigem, String dddDestino) {
+	public Boolean isCidadesIguais(String dddOrigem, String dddDestino) {
 		return dddOrigem.equalsIgnoreCase(dddDestino);
 	}
 	
-	private Boolean isEstadosIguais(String estadoOrigem, String estadoDestino) {
+	public Boolean isEstadosIguais(String estadoOrigem, String estadoDestino) {
 		return estadoOrigem.equalsIgnoreCase(estadoDestino);
 	}
 }
